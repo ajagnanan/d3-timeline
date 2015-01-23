@@ -169,9 +169,11 @@
               click(d, index, datum);
             })
             .attr("id", function (d, i) {
-              if (hasId){
+              if ( typeof(d.id) != "undefined"){
+                return "timelineItem_"+d.id;
+              } else if (hasId){
                 return "timelineItem_"+datum.id;
-              }else{
+              } else {
                 return "timelineItem_"+index;
               }
             })
