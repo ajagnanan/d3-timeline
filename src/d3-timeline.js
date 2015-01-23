@@ -169,13 +169,17 @@
               click(d, index, datum);
             })
             .attr("id", function (d, i) {
-              if ( typeof(d.id) != "undefined"){
-                return "timelineItem_"+d.id;
-              } else if (hasId){
-                return "timelineItem_"+datum.id;
+              var id;
+              if (hasId){
+                id = "timelineItem_"+datum.id;
               } else {
-                return "timelineItem_"+index;
+                id = "timelineItem_"+index;
               }
+              // Add the id of the data if present
+              if ( typeof(d.id) != "undefined"){
+                id += '_' + d.id;
+              }
+              return id;
             })
           ;
 
